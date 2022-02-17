@@ -1,4 +1,4 @@
-package com.kt.donors.enums;
+package com.kt.donors.model.enums;
 
 public enum Rank {
     ZASLUZONY_HONOROWY_DAWCA_KRWI_I_STOPNIA,

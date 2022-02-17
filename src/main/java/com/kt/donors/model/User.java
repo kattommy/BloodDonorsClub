@@ -1,16 +1,16 @@
 package com.kt.donors.model;
 
-import com.kt.donors.files.Donation;
-import com.kt.donors.payment.Payment;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.stereotype.Component;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.Date;
+import java.util.List;
 
 
-@Component
+@Entity
 @Data
 public class User {
 
@@ -23,19 +23,11 @@ public class User {
     private String email;
     private String password;
     private Date attachmentDate;
-    private Payment payment;
-    private Donation donationConfirm;
-    private boolean status;
+    @OneToMany
+    private List<Payment> paymentsList;
+    @OneToMany
+    private List<Donation> donationsConfirmList;
+    private boolean statusAccount;
     private String phoneNumber;
-
-
-    void changeEmail() {
-
-    }
-
-    void changePhoneNumber() {
-
-    }
-
 
 }

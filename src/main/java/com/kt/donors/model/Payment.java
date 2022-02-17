@@ -1,4 +1,4 @@
-package com.kt.donors.payment;
+package com.kt.donors.model;
 
 import lombok.Data;
 

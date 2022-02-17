@@ -1,4 +1,4 @@
-package com.kt.donors.notifications;
+package com.kt.donors.model;
 
 import lombok.Data;
 
@@ -9,13 +9,18 @@ import java.util.Date;
 
 @Entity
 @Data
-public class Notification {
+public class Donation {
 
     @Id
     @GeneratedValue
     private long id;
-    private String header;
-    private String content;
-    private Date additionDate;
+    private String place;
+    private Date donationDate;
+    private Date inputDate;
+    private int volumeOfBloodDonation;
+
+
+
+
 
 }

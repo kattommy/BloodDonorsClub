@@ -1,6 +1,6 @@
-package com.kt.donors.model;
+package com.kt.donors.controller;
 
-public interface Member {
+public interface IMemberController {
 
     void addDonationConfirm();
 
