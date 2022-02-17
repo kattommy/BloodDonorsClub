@@ -1,0 +1,21 @@
+package com.kt.donors.notifications;
+
+import lombok.Data;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.util.Date;
+
+@Entity
+@Data
+public class Notification {
+
+    @Id
+    @GeneratedValue
+    private long id;
+    private String header;
+    private String content;
+    private Date additionDate;
+
+}
