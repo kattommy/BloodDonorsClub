@@ -14,8 +14,11 @@ public class Notification {
     @Id
     @GeneratedValue
     private long id;
+
     private String header;
+
     private String content;
+
     private Date additionDate;
 
 }

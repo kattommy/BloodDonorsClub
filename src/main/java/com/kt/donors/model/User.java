@@ -5,7 +5,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -31,13 +31,13 @@ public class User {
     @CreatedDate()
     private Date attachmentDate = new Date();
 
-    @OneToMany(mappedBy = "payments")
-    private List<Payment> paymentsList;
+    @OneToMany(mappedBy = "users")
+    private Set<Payment> paymentsList;
 
-    @OneToMany(mappedBy = "confirmations")
-    private List<Donation> donationsConfirmList;
+    @OneToMany(mappedBy = "users")
+    private Set<Donation> donationsConfirmList;
 
-    @Column()
+
     private boolean statusAccount;
 
     @Column(length = 9)

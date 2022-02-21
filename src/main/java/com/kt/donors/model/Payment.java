@@ -1,10 +1,9 @@
 package com.kt.donors.model;
 
+import com.kt.donors.model.enums.PaymentValue;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -15,16 +14,15 @@ public class Payment {
     @Id
     @GeneratedValue
     private long id;
-    private long userId;
-    private Date startDate;
-    private Date finishDate;
 
+    private Date dateAdded;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private PaymentValue paymentValue;
 
-    public Long getId() {
-        return id;
-    }
+    @Column(length = 4)
+    private String paymentForYear;
+
+    @ManyToOne(optional = false)
+    private User users;
+
 }
