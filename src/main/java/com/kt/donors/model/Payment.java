@@ -13,7 +13,7 @@ public class Payment {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
     private Date dateAdded;
 

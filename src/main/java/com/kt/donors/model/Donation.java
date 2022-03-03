@@ -11,7 +11,7 @@ public class Donation {
 
     @Id
     @GeneratedValue
-    private long id;
+    private Long id;
 
 
     private String place;
