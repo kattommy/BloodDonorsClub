@@ -2,7 +2,13 @@ package com.kt.donors.controller;
 
 import com.kt.donors.model.User;
 
+import java.util.List;
+
 public interface ISeniorMemberController extends IMemberController {
+
+    List<User> getUsers();
+
+    void getRegisteredUsers();
 
     void addNotification();
 
@@ -19,5 +25,6 @@ public interface ISeniorMemberController extends IMemberController {
     void removeUser(User user);
 
     void changeUserStatus();
+
 
 }

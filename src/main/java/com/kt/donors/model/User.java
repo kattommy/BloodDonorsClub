@@ -1,6 +1,9 @@
 package com.kt.donors.model;
 
+import com.kt.donors.model.enums.Role;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -10,6 +13,8 @@ import java.util.Set;
 
 @Entity
 @Data
+@Getter
+@Setter
 public class User {
 
     @Id
@@ -37,10 +42,12 @@ public class User {
     @OneToMany(mappedBy = "users")
     private Set<Donation> donationsConfirmList;
 
-
     private boolean statusAccount;
 
     @Column(length = 9)
     private String phoneNumber;
+
+    @Column()
+    private Role role;
 
 }
