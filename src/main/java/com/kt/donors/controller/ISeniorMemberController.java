@@ -1,6 +1,7 @@
 package com.kt.donors.controller;
 
 import com.kt.donors.model.User;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -14,7 +15,7 @@ public interface ISeniorMemberController extends IMemberController {
 
     void confirmUserDonation(User user);
 
-    void createAccount();
+    RedirectView createAccount(User user);
 
     void confirmPayment(User user);
 
