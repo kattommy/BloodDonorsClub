@@ -4,10 +4,11 @@ import com.kt.donors.model.User;
 import com.kt.donors.model.enums.Role;
 import com.kt.donors.repository.UserRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
+import static java.util.Objects.requireNonNull;
 
 
 @Service
@@ -18,7 +19,10 @@ public class UserService {
     private final UserRepository userRepository;
 
     public User getUserById(Long id){
-      return userRepository.getById();
+      return userRepository.getById(id);
+    }
+    public User getUserByEmail(String email){
+        return userRepository.getUserByEmail( email );
     }
 
     public List<User> getAllUsers(){
@@ -37,15 +41,16 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public void createUser(User user) {
-        if (user.getId() != null) {
-            throw new IllegalArgumentException("Użytkownik o podanym ID już istnieje !!!");
-        }
-        updateUser(user);
-    }
 
-    public User loadUserBySurname(String surname) throws UsernameNotFoundException {
-        return userRepository.findBySurname(surname).orElseThrow(() -> new UsernameNotFoundException("Brak użytkownika o nazwisku: " + surname));
+    public void createUser(User user) {
+        requireNonNull(user);
+        if (getUserByEmail(user.getEmail()) != null) {
+            throw new IllegalArgumentException("Email already exist!");
+        }
+
+        user.setRole(Role.SENIOR_MEMBER);
+        updateUser(user);
+
     }
 
     public void assignTheRole(User user, Role newRole) {
