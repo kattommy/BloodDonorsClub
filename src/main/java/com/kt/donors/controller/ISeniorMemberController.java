@@ -1,13 +1,13 @@
 package com.kt.donors.controller;
 
 import com.kt.donors.model.User;
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.List;
 
 public interface ISeniorMemberController extends IMemberController {
 
-    List<User> getUsers();
+    String getUsers(Model model);
 
     void getRegisteredUsers();
 
@@ -15,7 +15,7 @@ public interface ISeniorMemberController extends IMemberController {
 
     void confirmUserDonation(User user);
 
-    RedirectView createAccount(User user);
+    RedirectView postAddUser(User user);
 
     void confirmPayment(User user);
 
