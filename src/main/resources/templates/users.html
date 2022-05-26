@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+   <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<h1>Lista Użytkowników</h1>
+
+<table class="table">
+    <thead>
+    <tr class="table-secondary">
+        <th class="table-secondary" scope="col">#</th>
+        <th class="table-secondary">Imie</th>
+        <th class="table-secondary">Nazwisko</th>
+        <th class="table-secondary">Email</th>
+        <th class="table-secondary">Hasło</th>
+        <th class="table-secondary">Numer telefonu</th>
+
+    </tr>
+    </thead>
+    <tbody>
+<tr th:each="user: ${users}">
+    <th th:text="${user.getId()}"></th>
+    <th th:text="${user.getName()}"/></td>
+    <th th:text="${user.getSurname()}"/></td>
+    <th th:text="${user.getEmail()}"/></td>
+    <th th:text="${user.getPassword()}"/></td>
+    <th th:text="${user.getPhoneNumber()}"/></td>
+    <td class="table-danger"><a th:href="@{'/users/editUser/{id}'(id=${user.id})}">Edytuj</a></td>
+    <td class="table-danger"><a th:href="@{'/users/deleteUser/{id}'(id=${user.id})}"> Usuń</a></td>
+</tr>
+    </tbody>
+</table>
+<span class="link">
+<a th:href="@{/users/addUser}">Dodaj użytkownika</a>
+</span>
+</body>
+</html>
