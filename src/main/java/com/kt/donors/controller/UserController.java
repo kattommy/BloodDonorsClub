@@ -6,12 +6,10 @@ import com.kt.donors.model.enums.Role;
 import com.kt.donors.service.UserService;
 import lombok.AllArgsConstructor;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
@@ -27,21 +25,22 @@ public class UserController implements IAdminController {
 
     @Override
     @PostMapping("/addUser")
-    public RedirectView createAccount(@ModelAttribute("user") User user) {
+    public RedirectView postAddUser(@ModelAttribute("user") User user) {
         userService.createUser(user);
-        return new RedirectView("/users");
+        return new RedirectView("users");
     }
     @GetMapping("/addUser")
-    public String getCreateAccount(){
+    public String getAddUser(){
         return "addUser";
     }
 
     @Override
-    @GetMapping
-    public List<User> getUsers(Model model) {
+    @GetMapping("/users")
+    @ResponseStatus(HttpStatus.OK)
+    public String getUsers(Model model) {
         List<User> users = (List<User>) userService.getAllUsers();
         model.addAttribute("users", users);
-        return users;
+        return "users";
     }
 
     @Override
@@ -82,11 +81,6 @@ public class UserController implements IAdminController {
     @Override
     public void changeEmail() {
 
-    }
-
-    @Override
-    public List<User> getUsers() {
-        return null;
     }
 
     @Override
