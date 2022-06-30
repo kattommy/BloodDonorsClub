@@ -23,7 +23,7 @@ public interface ISeniorMemberController extends IMemberController {
 
     void changeDocument();
 
-    void removeUser(User user);
+    String removeUser(User user);
 
     void changeUserStatus();
 

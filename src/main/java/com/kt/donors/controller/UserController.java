@@ -54,6 +54,13 @@ public class UserController implements IAdminController {
     }
 
     @Override
+    @GetMapping("/delete")
+    public String removeUser(@RequestParam User user) {
+        userService.deleteById(user.getId());
+        return "users/users";
+    }
+
+    @Override
     public void addDonationConfirm() {
 
     }
@@ -110,11 +117,6 @@ public class UserController implements IAdminController {
 
     @Override
     public void changeDocument() {
-
-    }
-
-    @Override
-    public void removeUser(User user) {
 
     }
 

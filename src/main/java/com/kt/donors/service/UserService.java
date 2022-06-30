@@ -56,4 +56,8 @@ public class UserService {
     public void assignTheRole(User user, Role newRole) {
         userRepository.getById(user.getId()).setRole(newRole);
     }
+
+    public void deleteById(Long id) {
+        userRepository.deleteById(id);
+    }
 }
